@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+//we can map different url's to same resource in request mapping
 @RestController
-@RequestMapping(value = "/myRest")
+@RequestMapping(value = {"/myRest","/testUrl"})
 public class MyRestController {
 	private static final Logger logger = LoggerFactory.getLogger(MyRestController.class);
 
-	@RequestMapping(value = "/mappingTest/{employeeId}", method = RequestMethod.GET)
+	//we can map different methods to same uri as below
+	@RequestMapping(value = "/mappingTest/{employeeId}", method = {RequestMethod.GET,RequestMethod.PUT})
 	@ResponseBody
 	public String getMappingTest(@PathVariable String employeeId) {
 		System.out.println("****---------Here-getMappingTest-------*****");
