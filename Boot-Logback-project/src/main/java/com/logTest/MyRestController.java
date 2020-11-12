@@ -33,4 +33,12 @@ public class MyRestController {
 		logger.info("logged::" + "****---------Here-postMappingTest-------*****");
 		return "received request::::::::" + employeeId.getName() + "  --dept: " + deptId;
 	}
+	
+	@RequestMapping(value = "/mappingTest", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public String putMappingTest(@RequestBody Employee employeeId) {
+		System.out.println("****---------Here-putMappingTest-------*****");
+		logger.info("logged::" + "****---------Here-putMappingTest-------*****");
+		return "received request::::::::" + employeeId.getName();
+	}
 }
