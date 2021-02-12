@@ -1,0 +1,1 @@
+similar example- https://dzone.com/articles/spring-boot-microservices-building-microservices-a
