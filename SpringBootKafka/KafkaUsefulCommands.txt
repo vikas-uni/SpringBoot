@@ -1,0 +1,30 @@
+Start zookeper-
+
+/Documents/Vik/kafka/apache-zookeeper/bin$ sudo ./zkServer.sh start
+
+-------------------------------------------------------------
+
+Start kafka server-
+
+./kafka-server-start.sh ../config/server.properties
+
+---------------------------------------------
+
+Create topic 'test' and send messages
+
+ sudo ./kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test
+[sudo] password for computer: 
+Created topic test.
+
+create a producer: open new terminal and type-
+computer@computer-VirtualBox:~/Documents/Vik/kafka/kafka/bin$ ./kafka-console-producer.sh --broker-list localhost:9092 --topic test
+>
+>hi
+>this is test
+
+-----------------------------------
+consume message-
+
+open a new terminal , type-
+./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test
+
