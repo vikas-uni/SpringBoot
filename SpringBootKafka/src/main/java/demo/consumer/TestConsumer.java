@@ -1,4 +1,4 @@
-package consumer;
+package demo.consumer;
 
 import java.util.Collections;
 import java.util.Properties;
@@ -7,7 +7,7 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 
-//this works
+//this also works 
 public class TestConsumer {
 	public static void main(String[] args) {
 		Properties props = new Properties();
