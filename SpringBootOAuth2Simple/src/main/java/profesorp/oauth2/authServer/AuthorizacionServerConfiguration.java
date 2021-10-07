@@ -1,4 +1,4 @@
-package profesorp.oauth2;
+package profesorp.oauth2.authServer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
