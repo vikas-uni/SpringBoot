@@ -3,12 +3,14 @@ server:
 spring:
   kafka:
     consumer:
-      bootstrap-servers: computer-VirtualBox:9092
+#      bootstrap-servers: computer-VirtualBox:9092    # this works with kafka running in virtualbox
+      bootstrap-servers: "[::1]:9092"  #this works with kafka running in WSL
       group-id: group1
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
     producer:
-      bootstrap-servers: computer-VirtualBox:9092
+#      bootstrap-servers: computer-VirtualBox:9092
+      bootstrap-servers: "[::1]:9092"
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer

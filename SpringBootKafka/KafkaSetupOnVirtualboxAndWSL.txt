@@ -1,0 +1,37 @@
+connect kafka from virtualbox
+http://boristyukin.com/connecting-to-kafka-on-virtualbox-from-windows/
+
+
+------------------------------------------
+spring boot kafka example-
+https://howtodoinjava.com/kafka/spring-boot-with-kafka/
+https://www.confluent.io/blog/apache-kafka-spring-boot-application/
+
+examples-java consumer-
+https://www.tutorialkart.com/apache-kafka/kafka-consumer-with-example-java-application/
+https://dzone.com/articles/writing-a-kafka-consumer-in-java
+
+---------------------------------------------------
+installing WSL-
+https://dev.to/bartr/install-docker-on-windows-subsystem-for-linux-v2-ubuntu-5dl7
+https://virtualizationreview.com/articles/2017/02/08/graphical-programs-on-windows-subsystem-on-linux.aspx
+https://www.illuminiastudios.com/dev-diaries/ssh-on-windows-subsystem-for-linux/
+
+updating to wsl2
+https://pureinfotech.com/install-windows-subsystem-linux-2-windows-10/
+
+connect to ssh on wsl2(working)-
+https://www.hanselman.com/blog/how-to-ssh-into-wsl2-on-windows-10-from-an-external-machine
+
+further reading on wsl2 ssh-
+https://superuser.com/questions/1622581/ssh-into-wsl-from-another-machine-on-the-network/1622603#1622603
+
+----------------------------------------------------
+
+run kafka on WSL(Windows system for linux) VM-
+
+setup-
+https://www.confluent.io/blog/set-up-and-run-kafka-on-windows-linux-wsl-2/
+
+for connection issues-
+https://stackoverflow.com/questions/64177422/unable-to-produce-to-kafka-topic-that-is-running-on-wsl-2-from-windows

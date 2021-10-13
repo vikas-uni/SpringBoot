@@ -29,18 +29,7 @@ open a new terminal , type-
 ./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test
 
 -------------------------------------------
-connect kafka from virtualbox
-http://boristyukin.com/connecting-to-kafka-on-virtualbox-from-windows/
 
-
-------------------------------------------
-spring boot kafka example-
-https://howtodoinjava.com/kafka/spring-boot-with-kafka/
-https://www.confluent.io/blog/apache-kafka-spring-boot-application/
-
-examples-java consumer-
-https://www.tutorialkart.com/apache-kafka/kafka-consumer-with-example-java-application/
-https://dzone.com/articles/writing-a-kafka-consumer-in-java
 
 
 
