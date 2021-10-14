@@ -46,8 +46,18 @@
 			</exclusions>
 		</dependency>
 	</dependencies>
-
+	
 	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- below build configuration copied jar into docker folder, now dockerfile command is changed to read jar from target folder -->
+	<!-- <build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -65,6 +75,6 @@
     			</executions>
 			</plugin>
 		</plugins>
-	</build>
+	</build> -->
 
 </project>

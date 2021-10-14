@@ -98,3 +98,11 @@ C:\Program Files\Docker\Docker\resources\bin\docker.exe: Error response from dae
 See 'C:\Program Files\Docker\Docker\resources\bin\docker.exe run --help'.
 PS D:\Java codes\proj\GitProjects\SpringBoot\java-api-docker-master\docker> docker container rm 7a84e9abc38a
 7a84e9abc38a
+
+to follow logs-
+ docker logs javaapi --follow
+ 
+to look whats inside an image-
+docker run -it java-api-vik:1.0 sh
+
+
