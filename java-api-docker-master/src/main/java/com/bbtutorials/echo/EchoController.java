@@ -6,10 +6,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class EchoController {
-	
+
 	@GetMapping("/echo/{name}")
-    public String echo(@PathVariable String name) {
-        return "Hello " + name;
-    }
+	public String echo(@PathVariable String name) {
+		System.out.println("-----Request received----" + name);
+		return "Hello " + name;
+	}
 
 }
