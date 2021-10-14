@@ -11,13 +11,13 @@ cd java-api-docker
 // clean and install
 mvn clean install
 // Run the application
-java -jar target/echo-0.0.1-SNAPSHOT.jar
+java -jar target/dockerBootDemo-0.0.1-SNAPSHOT.jar
 
 
 Change your directory if you are in the root location and build the docker image and verify with the following commands
 // change directory
 cd docker
-// build the image
+// build the image (the dot . in below command specifies the current directory to look for Dockerfile)
 docker build -t java-api .
 // list the image
 docker images

@@ -2,7 +2,7 @@
 FROM openjdk:8-jre-alpine
 
 # Copy war file
-COPY echo-0.0.1-SNAPSHOT.jar /echo.war
+COPY dockerBootDemo-0.0.1-SNAPSHOT.jar /dockerBootDemo.war
 
 # run the app
-CMD ["/usr/bin/java", "-jar", "/echo.war"]
+CMD ["/usr/bin/java", "-jar", "/dockerBootDemo.war"]
