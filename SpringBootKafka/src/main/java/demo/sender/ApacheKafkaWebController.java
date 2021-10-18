@@ -17,21 +17,29 @@ public class ApacheKafkaWebController {
 
 	@GetMapping(value = "/producer")
 	public String producer(@RequestParam("message") String message) {
-		kafkaSender.send(message);
-
-		return "Message sent to the Kafka Topic java_in_use_topic Successfully";
+		try {
+			kafkaSender.send(message);
+			return "Message sent-post to the Kafka Topic java_in_use_topic Successfully";
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return "Message sent-post to the Kafka Topic java_in_use_topic Failed";
 	}
-	
-	@PostMapping("/producer")
-	  String postProducer(@RequestBody String message) {
-		kafkaSender.send(message);
 
-		return "Message sent-post to the Kafka Topic java_in_use_topic Successfully";
-	  }
-	
-		/*
-		 * @PostMapping(value = "/publish") public void
-		 * sendMessageToKafkaTopic(@RequestParam("message") String message) {
-		 * this.producerService.sendMessage(message); }
-		 */
+	@PostMapping("/producer")
+	String postProducer(@RequestBody String message) {
+		try {
+			kafkaSender.send(message);
+			return "Message sent-post to the Kafka Topic java_in_use_topic Successfully";
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return "Message sent-post to the Kafka Topic java_in_use_topic Failed";
+	}
+
+	/*
+	 * @PostMapping(value = "/publish") public void
+	 * sendMessageToKafkaTopic(@RequestParam("message") String message) {
+	 * this.producerService.sendMessage(message); }
+	 */
 }

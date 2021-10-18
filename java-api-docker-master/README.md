@@ -41,6 +41,15 @@ docker logs javaapi
 docker exec -it javaapi /bin/sh
 
 
+to follow logs-
+ docker logs javaapi --follow
+ 
+to look whats inside an image-
+docker run -it java-api-vik:1.0 sh
+
+To expose multiple ports, simply provide multiple -p arguments:
+docker run -p <host_port1>:<container_port1> -p <host_port2>:<container_port2>
+
 =================================================================================================
 
 PS D:\Java codes\proj\GitProjects\SpringBoot\java-api-docker-master\docker> docker build -t java-api-vik .
@@ -99,10 +108,6 @@ See 'C:\Program Files\Docker\Docker\resources\bin\docker.exe run --help'.
 PS D:\Java codes\proj\GitProjects\SpringBoot\java-api-docker-master\docker> docker container rm 7a84e9abc38a
 7a84e9abc38a
 
-to follow logs-
- docker logs javaapi --follow
- 
-to look whats inside an image-
-docker run -it java-api-vik:1.0 sh
+
 
 
