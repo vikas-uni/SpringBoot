@@ -1,8 +1,11 @@
 package com.howtodoinjava.example.apigateway.controller;
 
+import java.util.concurrent.CompletableFuture;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,6 +47,18 @@ public class EmployeeController {
 
 		return "Employee Id -  " + testStr + " [ Employee Details " + response + " ]";
 	}
+	
+	@RequestMapping(value = "/testAsync/{employeeId}", method = RequestMethod.GET)
+    public ResponseEntity<Object> testAsync (@PathVariable String employeeId) throws InterruptedException {
+		System.out.println("in testAsync");
+		String response = restTemplate.exchange("http://employee-service/testAsync/{employeeId}",
+				HttpMethod.GET, null, new ParameterizedTypeReference<String>() {
+				}, employeeId).getBody();
+
+		System.out.println("got result testAsync Response Body " + response);
+
+		return ResponseEntity.ok().body(response);
+    }
 
 	public String fallbackMethod(int employeeid) {
 

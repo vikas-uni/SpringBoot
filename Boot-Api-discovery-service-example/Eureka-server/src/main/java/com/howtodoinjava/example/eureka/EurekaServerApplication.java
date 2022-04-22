@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 import de.codecentric.boot.admin.config.EnableAdminServer;
+//https://howtodoinjava.com/spring-cloud/microservices-monitoring/
 
 @SpringBootApplication
 @EnableEurekaServer
