@@ -11,25 +11,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @RestController
 public class EmployeeController {
 
+	Logger LOGGER = LoggerFactory.getLogger(EmployeeController.class);
+	
 	@Autowired
 	RestTemplate restTemplate;
 
 	@RequestMapping(value = "/employeeDetails/{employeeid}", method = RequestMethod.GET)
 	@HystrixCommand(fallbackMethod = "fallbackMethod")
 	public String getStudents(@PathVariable int employeeid) {
-		System.out.println("Getting Employee details for " + employeeid);
+		LOGGER.info("Getting Employee details for " + employeeid);
 
 		String response = restTemplate.exchange("http://employee-service/findEmployeeDetails/{employeeid}",
 				HttpMethod.GET, null, new ParameterizedTypeReference<String>() {
 				}, employeeid).getBody();
 
-		System.out.println("Response Body " + response);
+		LOGGER.info("Response Body " + response);
 
 		return "Employee Id -  " + employeeid + " [ Employee Details " + response + " ]";
 	}
@@ -37,25 +41,26 @@ public class EmployeeController {
 	@RequestMapping(value = "/testMethod/{testStr}", method = RequestMethod.GET)
 	@HystrixCommand(fallbackMethod = "myFallbackMethod")
 	public String testMethod(@PathVariable String testStr) {
-		System.out.println("Getting Employee details for " + testStr);
+		LOGGER.info("Getting Employee details for " + testStr);
 
 		String response = restTemplate.exchange("http://employee-service/getTestString/{employeeId}",
 				HttpMethod.GET, null, new ParameterizedTypeReference<String>() {
 				}, testStr).getBody();
 
-		System.out.println("Response Body " + response);
+		LOGGER.info("Response Body " + response);
 
 		return "Employee Id -  " + testStr + " [ Employee Details " + response + " ]";
 	}
 	
 	@RequestMapping(value = "/testAsync/{employeeId}", method = RequestMethod.GET)
+	@HystrixCommand(fallbackMethod = "myFallbackMethod")
     public ResponseEntity<Object> testAsync (@PathVariable String employeeId) throws InterruptedException {
-		System.out.println("in testAsync");
+		LOGGER.info("in testAsync");
 		String response = restTemplate.exchange("http://employee-service/testAsync/{employeeId}",
 				HttpMethod.GET, null, new ParameterizedTypeReference<String>() {
 				}, employeeId).getBody();
 
-		System.out.println("got result testAsync Response Body " + response);
+		LOGGER.info("got result testAsync Response Body " + response);
 
 		return ResponseEntity.ok().body(response);
     }

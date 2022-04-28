@@ -7,6 +7,7 @@ import java.util.concurrent.CompletionStage;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Function;
 
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +22,7 @@ import com.howtodoinjava.example.employee.beans.Employee;
 public class EmployeeServiceController {
 
 	// introducing logger
-	org.slf4j.Logger logger = LoggerFactory.getLogger(EmployeeServiceController.class);
+	Logger logger = LoggerFactory.getLogger(EmployeeServiceController.class);
 
 	@Autowired
 	private GitHubLookupService lookupService;
