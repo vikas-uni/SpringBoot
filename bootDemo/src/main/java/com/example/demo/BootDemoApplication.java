@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages={"com.example.controller"}) // needed this to make it work
 public class BootDemoApplication {
 
 	public static void main(String[] args) {

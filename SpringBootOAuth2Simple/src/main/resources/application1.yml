@@ -1,3 +1,5 @@
+
+#the configuration below seem to have no effect after removing
 security:
   oauth2:
     client:

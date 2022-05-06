@@ -47,15 +47,19 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
         	.csrf().disable()
             .authorizeRequests()
-            	.antMatchers("/","/index","/webpublico").permitAll()
-            	.antMatchers("/webprivado").authenticated()
-            	.antMatchers("/webadmin").hasRole("ADMIN").and()
-                .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .and()
-                .logout() // Metodo get pues he desabilitado CSRF
-                .permitAll();
+            	//.antMatchers("/","/index","/webpublico").permitAll()
+            .antMatchers("/","/publica").permitAll()
+            	//.antMatchers("/webprivado").authenticated()
+            .antMatchers("/privada").authenticated()
+            	//.antMatchers("/webadmin").hasRole("ADMIN").and()
+            .antMatchers("/admin").hasRole("ADMIN").and()
+               .formLogin()
+                //.loginPage("/login")
+                //.permitAll()
+                //.and()
+                //.logout() // Metodo get pues he desabilitado CSRF
+                //.permitAll();
+               .disable();
     }
 
 }

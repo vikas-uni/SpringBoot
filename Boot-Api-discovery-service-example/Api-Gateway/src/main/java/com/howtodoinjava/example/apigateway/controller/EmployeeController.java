@@ -53,7 +53,7 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping(value = "/testAsync/{employeeId}", method = RequestMethod.GET)
-	@HystrixCommand(fallbackMethod = "myFallbackMethod")
+	@HystrixCommand(fallbackMethod = "asyncFallbackMethod")
     public ResponseEntity<Object> testAsync (@PathVariable String employeeId) throws InterruptedException {
 		LOGGER.info("in testAsync");
 		String response = restTemplate.exchange("http://employee-service/testAsync/{employeeId}",
@@ -73,6 +73,11 @@ public class EmployeeController {
 	public String myFallbackMethod(String myStr) {
 
 		return "Fallback response:: No details available temporarily " + myStr;
+	}
+	
+	public ResponseEntity<Object> asyncFallbackMethod(String myStr) {
+
+		return ResponseEntity.ok("Fallback response asyncFallbackMethod:: No details available temporarily " + myStr);
 	}
 
 	/*@Bean
