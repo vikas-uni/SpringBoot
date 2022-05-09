@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "e342ccf4-6926-4bb5-b626-0c956271aa25",
+		"name": "MyJwtDBImpl",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8112/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"vikas\",\r\n    \"password\" : \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8112/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8112",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8112/authenticate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"vikas\",\r\n    \"password\" : \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8112/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8112",
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8112/greeting",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2aWthcyIsImV4cCI6MTY1MjA5Mzk4NiwiaWF0IjoxNjUyMDc1OTg2fQ.6VNp6TyEULU0t-QMFYbGzGP2LRfLTcxbONzlegIlq7HEwLIWdHJ6RJDy6BvILn3FLqJBqdLxNyugkzWIHVHmbQ",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8112/greeting",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8112",
+					"path": [
+						"greeting"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
