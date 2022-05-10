@@ -16,9 +16,10 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 			http
 			.authorizeRequests().antMatchers("/oauth/token", "/oauth/authorize**", "/publicApi").permitAll();
 //			 .anyRequest().authenticated();
-			http.requestMatchers().antMatchers("/privateApi")
+			http.requestMatchers().antMatchers("/privateApi", "/testApi") // the /testApi id not checked for authentication by spring security but by ResourceServer
 			.and().authorizeRequests()
 			.antMatchers("/privateApi").access("hasRole('USER')")
+			.antMatchers("/testApi").access("hasRole('USER')")
 			.and().requestMatchers().antMatchers("/admin")
 			.and().authorizeRequests()
 			.antMatchers("/admin").access("hasRole('ADMIN')");

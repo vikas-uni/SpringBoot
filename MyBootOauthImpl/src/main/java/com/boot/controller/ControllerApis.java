@@ -15,4 +15,9 @@ public class ControllerApis {
 	public String getPrivate() {
 		return "private api response";
 	}
+	
+	@GetMapping("/testApi")
+	public String testApi() {
+		return "testApi api response";
+	}
 }

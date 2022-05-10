@@ -9,22 +9,16 @@
 			"name": "http://localhost:8111/privateApi",
 			"request": {
 				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "secret",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "user",
-							"type": "string"
-						}
-					]
+					"type": "noauth"
 				},
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer 45c3e35e-a457-4dc9-9b56-5c9e816f22df",
+						"type": "default"
+					}
+				],
 				"url": {
 					"raw": "http://localhost:8111/privateApi",
 					"protocol": "http",
@@ -40,25 +34,45 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8111/oauth/token",
+			"name": "http://localhost:8113/oauth/token",
 			"request": {
 				"auth": {
 					"type": "basic",
 					"basic": [
 						{
 							"key": "password",
-							"value": "secret",
+							"value": "password",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "user",
+							"value": "cliente",
 							"type": "string"
 						}
 					]
 				},
-				"method": "GET",
+				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "vikas4",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "default"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "default"
+						}
+					]
+				},
 				"url": {
 					"raw": "http://localhost:8111/oauth/token",
 					"protocol": "http",
@@ -91,6 +105,35 @@
 					"port": "8111",
 					"path": [
 						"publicApi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8111/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"vikas1\",\r\n    \"password\" : \"password\",\r\n    \"role\" : \"ROLE_ADMIN\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8111/register/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8111",
+					"path": [
+						"register",
+						"user"
 					]
 				}
 			},
