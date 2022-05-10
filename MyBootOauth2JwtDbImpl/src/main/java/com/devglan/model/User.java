@@ -24,6 +24,9 @@ public class User {
 	
 	@Column
 	private int age;
+	
+	@Column
+	private String role;
 
 	public long getId() {
 		return id;
@@ -64,4 +67,13 @@ public class User {
 	public void setAge(int age) {
 		this.age = age;
 	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+	
 }
