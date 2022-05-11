@@ -46,7 +46,7 @@
 						},
 						{
 							"key": "username",
-							"value": "cliente",
+							"value": "client",
 							"type": "string"
 						}
 					]

@@ -24,6 +24,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	       return super.authenticationManagerBean();
 	}
 	
+	//use this to get client details from DB
 	@Resource(name = "userService")
     private UserDetailsService userDetailsService;
 	
