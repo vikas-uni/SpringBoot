@@ -19,6 +19,16 @@ import com.demo.model.JwtResponse;
 import com.demo.model.UserDTO;
 import com.demo.service.JwtUserDetailsService;
 
+/*
+How it works: When user login with username + password for the first time, the system will exchange back the access token,
+ which this token represents a JSON map containing all user information, such as user profiles, roles, 
+ and privileges, encoded with Base64 and signed with a private key. 
+ After receiving the token, the user can keep using this until it is expired by itself.
+
+Benefits: The JWT token is stateless. This means that the server can decrypt the token into the user 
+information state and there is no need for additional looking up from the database with this token. 
+This is a huge benefit in reducing the load on the server. This approach is widely used all over the world.
+*/
 
 @RestController
 @CrossOrigin

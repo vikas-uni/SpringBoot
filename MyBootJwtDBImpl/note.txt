@@ -1,6 +1,8 @@
 https://www.techgeeknext.com/spring/spring-boot-security-token-authentication-jwt-mysql
 https://www.javainuse.com/spring/boot-jwt-mysql
 
+good example- https://medium.com/javarevisited/springboot-security-with-jwt-fca1446790ba
+
 JWT stands for JSON Web Token. JSON Web Token (JWT) is an open standard (RFC 7519) that defines 
 a compact and self-contained way for securely transmitting information between parties as a JSON object. 
 This information can be verified and trusted because it is digitally signed. 

@@ -19,6 +19,9 @@ import com.demo.service.JwtUserDetailsService;
 
 import io.jsonwebtoken.ExpiredJwtException;
 
+/*
+This filter is used for validating the access_token sent by the user if it is valid or not.
+*/
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 
