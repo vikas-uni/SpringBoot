@@ -4,6 +4,8 @@ https://adamzareba.github.io/Secure-Spring-REST-With-Spring-Security-and-OAuth2/
 
 Example Spring Boot + Hibernate + Spring Security + OAuth2 project for demonstration purposes. 
 
+another good example- https://codeaches.com/spring-cloud-security/oauth2-authorization-jdbc-token-store
+
 ## Getting started
 ### Prerequisites:
 - Java 8
