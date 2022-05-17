@@ -1,0 +1,32 @@
+https://dev.to/bartr/install-docker-on-windows-subsystem-for-linux-v2-ubuntu-5dl7
+https://virtualizationreview.com/articles/2017/02/08/graphical-programs-on-windows-subsystem-on-linux.aspx
+https://www.illuminiastudios.com/dev-diaries/ssh-on-windows-subsystem-for-linux/
+
+updating to wsl2
+https://pureinfotech.com/install-windows-subsystem-linux-2-windows-10/
+
+connect to ssh on wsl2(working)-
+https://www.hanselman.com/blog/how-to-ssh-into-wsl2-on-windows-10-from-an-external-machine
+
+further reading on wsl2 ssh-
+https://superuser.com/questions/1622581/ssh-into-wsl-from-another-machine-on-the-network/1622603#1622603
+
+--------------------------------------
+
+open cmd, type wsl and press enter
+wsl will prompt for password, pw is - vikasgond
+on terminal, type command- service ssh start
+From within WSL2 get your IP address using "ifconfig."
+
+Now, from an Administrator Windows prompt - that can be cmd.exe or powershell.exe, it doesn't matter, use the net shell "netsh" to add a portproxy rule. Again, change connectaddress to YOUR WSL2 ipaddress, which is an internal address to your machine.
+
+netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=2200 connectaddress=172.23.129.80 connectport=2200
+
+Next, from the same Administrator Windows prompt, open an incoming Firewall Port. You can do it from the Advanced Firewall Settings, but even easier you can use netsh again!
+
+netsh advfirewall firewall add rule name=”Open Port 2222 for WSL2” dir=in action=allow protocol=TCP localport=2222
+
+
+ref- 
+https://www.hanselman.com/blog/how-to-ssh-into-wsl2-on-windows-10-from-an-external-machine
+--------------------------------------------------------------------
