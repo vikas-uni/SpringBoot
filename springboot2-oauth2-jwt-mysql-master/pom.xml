@@ -5,11 +5,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.example.authserver</groupId>
-	<artifactId>springboot2-authserver</artifactId>
+	<artifactId>springboot2-jwt-mysql-authserver</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>springboot2-authserver</name>
+	<name>springboot2-jwt-mysql-authserver</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
