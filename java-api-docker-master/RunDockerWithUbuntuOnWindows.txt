@@ -26,6 +26,11 @@ Next, from the same Administrator Windows prompt, open an incoming Firewall Port
 
 netsh advfirewall firewall add rule name=”Open Port 2222 for WSL2” dir=in action=allow protocol=TCP localport=2222
 
+now you can connect to terminal using winscp
+
+run docker on wsl- sudo service docker start
+
+access apis running inside docker in ws with ip- connectaddress=<ip obtained by ifconfig command>
 
 ref- 
 https://www.hanselman.com/blog/how-to-ssh-into-wsl2-on-windows-10-from-an-external-machine
