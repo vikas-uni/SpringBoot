@@ -17,6 +17,8 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 @Configuration
 @EnableAuthorizationServer
@@ -39,10 +41,24 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Autowired
 	private PasswordEncoder oauthClientPasswordEncoder;
 
+//	@Bean
+//	public TokenStore tokenStore() {
+//		return new JdbcTokenStore(dataSource);
+//	}
+	
+	//------------add these lines to get jwt token instead of normal token-----
 	@Bean
 	public TokenStore tokenStore() {
-		return new JdbcTokenStore(dataSource);
+		return new JwtTokenStore(jwtAccessTokenConverter());
 	}
+	
+	@Bean
+	public JwtAccessTokenConverter jwtAccessTokenConverter() {
+		JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+		converter.setSigningKey("as466gf");
+		return converter;
+	}
+	//----------------------------------
 
 	@Bean
 	public OAuth2AccessDeniedHandler oauthAccessDeniedHandler() {
@@ -60,9 +76,18 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 		clients.jdbc(dataSource);
 	}
 
+//	@Override
+//	public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
+//		endpoints.tokenStore(tokenStore()).authenticationManager(authenticationManager)
+//				.userDetailsService(userDetailsService);
+//	}
+	
+	//for jwt token, add- tokenEnhancer(jwtAccessTokenConverter())
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
-		endpoints.tokenStore(tokenStore()).authenticationManager(authenticationManager)
+		endpoints.tokenStore(tokenStore()).
+		tokenEnhancer(jwtAccessTokenConverter()).
+		authenticationManager(authenticationManager)
 				.userDetailsService(userDetailsService);
 	}
 }
