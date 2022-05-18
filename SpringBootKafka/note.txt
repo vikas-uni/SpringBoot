@@ -1,0 +1,35 @@
+to run this example locally-
+
+-run this app as springboot app in STS
+-open wsl command propmt
+-goto zookeper directory and start zookeeper:  vikasgond@vikasgond:~/Kafka/apache-zookeeper/bin$ sudo ./zkServer.sh start
+-goto kafka directory and start kafka : vikasgond@vikasgond:~/Kafka/kafka/bin$ ./kafka-server-start.sh ../config/server.properties
+- if permission issue occurs then execute following commands
+  	vikasgond@vikasgond:~/Kafka/kafka/bin$ whoami
+	vikasgond	
+	vikasgond@vikasgond:~/Kafka$ sudo chown -R vikasgond kafka
+
+- use this curl to send message-
+curl --location --request POST 'http://localhost:9000/javainuse-kafka/producer' \
+--header 'Authorization: Basic YWRtaW46cGFzc3dvcmQ=' \
+--header 'Content-Type: text/plain' \
+--header 'Cookie: JSESSIONID=790ACB70C541EA9F2ACAF6682703FFF0' \
+--data-raw 'test data1sseazscascasffugigfdtydasasdads'
+
+
+----to run in wsl with kafka running in docker----
+-start this app in wsl by executing jar file: vikasgond@vikasgond:~/Projects/GitProjects/SpringBoot/SpringBootKafka/target$ java -jar Boot-kafka-0.0.1-SNAPSHOT.jar
+-change ip in docker-compose.yml file to current ip of wsl
+-start git kafka: 
+	vikasgond@vikasgond:~/KafkaDockerFromGit/kafka-docker$ docker-compose up
+	Creating network "kafka-docker_default" with the default driver
+	Creating kafka-docker_zookeeper_1 ... done
+	Creating kafka-docker_kafka_1     ... done
+	Attaching to kafka-docker_zookeeper_1, kafka-docker_kafka_1
+
+-use this curl:
+	curl --location --request POST 'http://172.25.218.51:9000/javainuse-kafka/producer' \
+--header 'Authorization: Basic YWRtaW46cGFzc3dvcmQ=' \
+--header 'Content-Type: text/plain' \
+--header 'Cookie: JSESSIONID=1477EDA2C61AB9ADD635F62DB5EA35B2' \
+--data-raw 'test data1sseazscascasffugigfdtydasasdads'
