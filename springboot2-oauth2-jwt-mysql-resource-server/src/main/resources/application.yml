@@ -1,0 +1,17 @@
+server:
+  port: 8131
+
+security:
+  oauth2:
+    resource:
+      jwt:
+        key-value: |
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoMbPNf8YUkJ78cda8ss4
+          bCwto0rCAfcFkqBYNevH7eKpH+OCpfmU/GL2QPIepGlGQtWMf8AHEfzEK5ijlgxQ
+          XDpwCOK4k9HZNbjbaFg9R5sXkG8BcUMbAnusgnqyScduFuZldz4oWtK+ditbvD3c
+          GZaKP2yu4mz8HqGPvc1JS5Iu/js6Yq3132FyH/l2SMYNSWrA5orMtIQworvLcrGj
+          2r/ezsPrWDY+uaeuuSKbQqJ1GOySoSM66/dHGSXjjLdjjdkJtjykgHLWxIKJSkI3
+          zNdY6y9vD4L7a1j6InZ6zm1i28iKjXATySmDQSwoddfpbYxAzLT06UUAQlJMKsom
+          TwIDAQAB
+          -----END PUBLIC KEY-----

@@ -1,6 +1,20 @@
 # springboot2-oauth2-jwt-mysql
 Springboot 2, Oauth 2.0, JWT, MySQL example
 
+see also-- https://stackoverflow.com/questions/47713209/creating-and-verifying-jwt-signature-using-public-private-key-in-spring-boot-sec
+https://tech.forums.softwareag.com/t/create-keystore-certificate-and-export-public-key/237518
+
+generated jks file-
+keytool -genkeypair -alias mytest -keyalg RSA -keypass mypass -keystore mytest.jks -storepass mypass
+
+generated pem file-
+keytool -exportcert -alias mytest -keystore mytest.jks -rfc -file pubkey.pem
+
+generate public key string-
+keytool -list -rfc --keystore mytest.jks | openssl x509 -inform pem -pubkey
+
+OpenSSL can be found here to execute above command-
+C:\Program Files\Git\usr\bin\openssl.exe
 
 ## Steps to Run
 
