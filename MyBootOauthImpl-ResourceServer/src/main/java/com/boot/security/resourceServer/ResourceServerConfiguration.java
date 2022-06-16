@@ -17,7 +17,6 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 	private static final String RESOURCE_ID = "resource-server-rest-api";
 
-	// added to make auth server run with DB token store
 	@Override
 	public void configure(ResourceServerSecurityConfigurer resources) {
 		resources.resourceId(RESOURCE_ID);
