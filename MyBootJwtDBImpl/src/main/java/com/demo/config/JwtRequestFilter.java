@@ -20,7 +20,11 @@ import com.demo.service.JwtUserDetailsService;
 import io.jsonwebtoken.ExpiredJwtException;
 
 /*
-This filter is used for validating the access_token sent by the user if it is valid or not.
+JWT Authentication Filter
+Okay, back to the JWTAuthenticationFilter which will filter out requests that have JWT as header 
+and translate that to something Spring Security can understand using the methods from the Token Provider 
+we just created. This extends the OncePerRequestFilter meaning it's going to look for the JWT token in 
+every single request and update the SecurityContext.
 */
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {

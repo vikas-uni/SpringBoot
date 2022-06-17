@@ -14,6 +14,12 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
+/*JWT Token Provider
+Let’s first create a component class that will handle all things JWT. We will call the methods within this class to generate the JWT as well as validate the JWT when the user sends it back to us.
+The generateToken method builds and signs the JWT Token that we will pass along to the user as soon as they authenticate. Here is where as part of the payload, we will add the username, roles (comma separated), and the issuedAt and expiration timestamps.
+validateToken basically checks if the username on the token payload matches the UserDetails. It also checks if the token has expired.
+Spring Security Context holds the information of an authenticated user represented as an Authentication object. In order to construct this Authentication object, we need to provide a UsernamePasswordAuthenticationToken which will later be used by our AuthenticationManager (Which we configured previously) to Authenticate our user. To construct, we are passing along the user details as well as a collection of authorities(roles) that we parse from the JWT Token. This is exactly what's happening inside getAuthenticationToken.
+*/
 @Component
 public class JwtTokenUtil implements Serializable {
 
