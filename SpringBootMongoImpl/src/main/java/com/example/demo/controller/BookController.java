@@ -7,6 +7,7 @@ import com.example.demo.model.Book;
 import com.example.demo.repo.BookRepo;
 
 import java.util.List;
+import java.util.Optional;
   
 @RestController
 public class BookController {
@@ -27,6 +28,13 @@ public class BookController {
         return repo.findAll();
     }
   
+    @GetMapping("/getBook/{id}")
+    public Optional<Book> getBook(@PathVariable int id) {
+        
+        return repo.findById(id);
+    }
+  
+    
     @DeleteMapping("/delete/{id}")
     public String deleteBook(@PathVariable int id){
         repo.deleteById(id);
