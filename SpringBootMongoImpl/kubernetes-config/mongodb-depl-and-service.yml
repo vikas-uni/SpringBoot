@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: ConfigMap  # this config map is not used anywhere currently
+metadata:
+  name: mongo-config
+  namespace: my-boot-apps
+  labels:
+    app: mongodbapp
+data:
+  mongo-url: mongodbapp
+  host: mongodbapp
+  database: BookStore
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-deployment
+  namespace: my-boot-apps
+  labels:
+    app: mongodbapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodbapp
+  template:
+    metadata:
+      labels:
+        app: mongodbapp
+      name: mongodbservice
+#        selector: mongodb-standalone
+    spec:
+      containers:
+      - name: mongodbapp
+        image: mongo
+#        env:
+#          - name: MONGO_INITDB_ROOT_USERNAME
+#            value: admin
+#          - name: MONGO_INITDB_ROOT_PASSWORD
+#            value: password
+        ports:
+        - containerPort: 27017    
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodbservice
+  namespace: my-boot-apps
+  labels:
+    app: mongodbapp
+spec:
+  selector:
+    app: mongodbapp
+  ports:
+  - protocol: TCP
+    port: 27017  #could be anything, doesnt matter
+    targetPort: 27017  #should be same as containerPort

@@ -1,0 +1,10 @@
+This config starts app and mongo db in kubernetes cluster
+
+https://nirajsonawane.github.io/2020/04/25/Deploy-React-Spring-Boot-MongoDB-Fullstack-application-on-Kubernetes/
+https://dzone.com/articles/a-developmentdeployment-setup-for-an-angular-sprin
+
+with config map and secrets-
+https://github.com/parthec2/springboot-mongodb-k8s-parth/tree/main/src/main/resources
+
+config with ELK-
+https://github.com/aritnag/spring-boot-mongo-kubernetes-docker/blob/master/deployment.yml

@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: boot-mongo-deployment
+  namespace: my-boot-apps
+  labels:
+    app: boot-mongo-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: boot-mongo-app
+  template:
+    metadata:
+      labels:
+        app: boot-mongo-app
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/arch
+                operator: In
+                values:
+                - amd64
+                - arm64
+      containers:
+      - name: boot-mongo-app
+        image: vikasuni/boot-mongo-demo
+        ports:
+        - name: http
+          containerPort: 8989
+        imagePullPolicy: Always  #IfNotPresent
+        env:
+          - name: MONGO_URL  # this variable is defined in application properties of the app
+            value: mongodb://mongodbservice:27017   #this maps from service name of mongodb service config yaml
+      nodeSelector:
+        kubernetes.io/os: linux
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: boot-mongo-service
+  namespace: my-boot-apps
+  labels:
+    app: boot-mongo-app
+spec:
+  type: ClusterIP
+  selector:
+    app: boot-mongo-app
+  ports:
+    - protocol: TCP
+      port: 8989
+      targetPort: 8989
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: boot-mongo-nodeport
+  namespace: my-boot-apps
+  labels:
+    app: boot-mongo-app
+spec:
+  type: NodePort
+  selector:
+    app: boot-mongo-app
+  ports:
+    - protocol: TCP
+      port: 8989
+      targetPort: 8989
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: boot-mongo-loadbalancer
+  namespace: my-boot-apps
+spec:
+  type: LoadBalancer
+  selector:
+    app: boot-mongo-app
+  ports:
+    - protocol: TCP
+      port: 8989
+      targetPort: 8989

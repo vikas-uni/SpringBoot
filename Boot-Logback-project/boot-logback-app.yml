@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: boot-logback-deployment
+  namespace: eks-sample-app
+  labels:
+    app: boot-logback-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: boot-logback-app
+  template:
+    metadata:
+      labels:
+        app: boot-logback-app
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/arch
+                operator: In
+                values:
+                - amd64
+                - arm64
+      containers:
+      - name: boot-logback-app
+        image: vikasuni/boot-logback-demo
+        ports:
+        - name: http
+          containerPort: 8111
+        imagePullPolicy: IfNotPresent
+      nodeSelector:
+        kubernetes.io/os: linux
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: boot-logback-service
+  namespace: eks-sample-app
+  labels:
+    app: boot-logback-app
+spec:
+  type: ClusterIP
+  selector:
+    app: boot-logback-app
+  ports:
+    - protocol: TCP
+      port: 8111
+      targetPort: 8111
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: boot-logback-nodeport
+  namespace: eks-sample-app
+  labels:
+    app: boot-logback-app
+spec:
+  type: NodePort
+  selector:
+    app: boot-logback-app
+  ports:
+    - protocol: TCP
+      port: 8111
+      targetPort: 8111
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: boot-logback-loadbalancer
+  namespace: eks-sample-app
+spec:
+  type: LoadBalancer
+  selector:
+    app: boot-logback-app
+  ports:
+    - protocol: TCP
+      port: 8111
+      targetPort: 8111
