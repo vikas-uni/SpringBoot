@@ -1,3 +1,47 @@
+#adding a namespace. this is optional, can be created from commandline also
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: eks-sample-app
+---
+#PersistentVolumeClaim config File
+#Please note below points
+#Usage of hostPath is not recommended in production
+#capacity of PV and PVC needs to match
+#accessModes of PV and PVC needs to match
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mylogs-demo-pv
+  namespace: eks-sample-app  
+spec:
+  capacity:
+    storage: 256Mi
+#  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: manual #local-storage
+#  local:
+#Minikube supports only hostpath.
+  hostPath: 
+    path: /home/vikasgond/storage  #this path will be available inside minikube vm and not on local machine
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mylogs-pvc
+  namespace: eks-sample-app
+spec:
+#  volumeName: mylogs-demo-pv
+  storageClassName: manual #local-storage
+#  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 256Mi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -6,7 +50,7 @@ metadata:
   labels:
     app: boot-logback-app
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: boot-logback-app
@@ -15,16 +59,6 @@ spec:
       labels:
         app: boot-logback-app
     spec:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: kubernetes.io/arch
-                operator: In
-                values:
-                - amd64
-                - arm64
       containers:
       - name: boot-logback-app
         image: vikasuni/boot-logback-demo
@@ -32,6 +66,17 @@ spec:
         - name: http
           containerPort: 8111
         imagePullPolicy: IfNotPresent
+        env:
+          - name: LOGFILE_PATH  # this variable is defined in application properties of the app
+            value: /home/vikasgond/storage/myAppLogs/applog.log  #log file will be generated inside minikube vm and not on local machine
+            #can be viewed by executing command: minikube ssh -- cat /home/vikasgond/storage/myAppLogs/applog.log
+        volumeMounts:
+            - name: storage
+              mountPath: /home/vikasgond/storage
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: mylogs-pvc
       nodeSelector:
         kubernetes.io/os: linux
 ---
