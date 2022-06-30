@@ -20,12 +20,12 @@ spec:
 #  volumeMode: Filesystem
   accessModes:
   - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
+  persistentVolumeReclaimPolicy: Delete #Retain
   storageClassName: manual #local-storage
 #  local:
 #Minikube supports only hostpath.
   hostPath: 
-    path: /home/vikasgond/storage  #this path will be available inside minikube vm and not on local machine
+    path: /myK8storage/data  #this path will be available inside minikube vm and not on local machine
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -68,11 +68,11 @@ spec:
         imagePullPolicy: IfNotPresent
         env:
           - name: LOGFILE_PATH  # this variable is defined in application properties of the app
-            value: /home/vikasgond/storage/myAppLogs/applog.log  #log file will be generated inside minikube vm and not on local machine
-            #can be viewed by executing command: minikube ssh -- cat /home/vikasgond/storage/myAppLogs/applog.log
+            value: /myK8storage/data/myAppLogs/applog.log  #log file will be generated inside minikube vm and not on local machine
+            #can be viewed by executing command: minikube ssh -- cat /myK8storage/data/myAppLogs/applog.log
         volumeMounts:
             - name: storage
-              mountPath: /home/vikasgond/storage
+              mountPath: /myK8storage/data
       volumes:
         - name: storage
           persistentVolumeClaim:
