@@ -1,1 +1,4 @@
 https://www.mkyong.com/spring-boot/spring-boot-slf4j-logging-example/
+
+the logback.xml file can also be used to configure logging by copying it into the resource folder. currently spring application
+properties are used to configure logging file and path
