@@ -70,6 +70,7 @@ spec:
           - name: LOGFILE_PATH  # this variable is defined in application properties of the app
             value: /myK8storage/data/myAppLogs/applog.log  #log file will be generated inside minikube vm and not on local machine
             #can be viewed by executing command: minikube ssh -- cat /myK8storage/data/myAppLogs/applog.log
+            #can delete using command: minikube ssh -- sudo rm -rf /myK8storage/data/myAppLogs/applog.log
         volumeMounts:
             - name: storage
               mountPath: /myK8storage/data
