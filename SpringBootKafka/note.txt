@@ -1,3 +1,9 @@
+Kafka topics and partitions basics-
+
+https://hevodata.com/learn/kafka-partitions/
+https://www.instaclustr.com/blog/a-visual-understanding-to-ensuring-your-kafka-data-is-literally-in-order/
+https://newrelic.com/blog/best-practices/kafka-best-practices
+
 to run this example locally-
 
 -run this app as springboot app in STS
