@@ -2,6 +2,7 @@ package com.layo.kafkaexample.engine;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.Acknowledgment;
@@ -14,9 +15,14 @@ import org.springframework.stereotype.Service;
 @ConditionalOnProperty(value = "example.kafka.consumer-enabled", havingValue = "true")
 public class Consumer {
 
+	@Value("${TOPIC_NAME}")
+    private String topicName;
+	
     private final Logger logger = LoggerFactory.getLogger(Producer.class);
 
-    @KafkaListener(topics = {"INPUT_DATA"})
+    //@KafkaListener(topics = {"INPUT_DATA"})
+    //@KafkaListener(topics = {"#{'${TOPIC_NAME}'.split(',')}"})  //this also workss
+    @KafkaListener(topics = {"${TOPIC_NAME}"})
     public void consume(final @Payload String message,
                         final @Header(KafkaHeaders.OFFSET) Integer offset,
                         final @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) String key,

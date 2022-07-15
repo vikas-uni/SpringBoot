@@ -31,3 +31,6 @@ spring:
       poll-timeout: 1800000
       concurrency: 1
       ack-mode: manual_immediate
+      
+TOPIC_NAME: test
+kafka_bootstrap_servers: '127.0.0.1:9092'
