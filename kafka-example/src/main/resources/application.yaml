@@ -32,5 +32,5 @@ spring:
       concurrency: 1
       ack-mode: manual_immediate
       
-TOPIC_NAME: test
+TOPIC_NAME: mytest
 kafka_bootstrap_servers: '127.0.0.1:9092'

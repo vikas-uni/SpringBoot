@@ -1,8 +1,16 @@
+# using configuration below, 
 #the employee-service is accessible at- http://localhost:8079/api/demo/findEmployeeDetails/111
+#zuul.routes.findEmployeeDetails.path: /api/demo/**
+#zuul.routes.findEmployeeDetails.url: http://localhost:8011
 
-zuul.routes.findEmployeeDetails.path: /api/demo/**
-zuul.routes.findEmployeeDetails.url: http://localhost:8011
+
+# using configuration below, 
+#the employee-service is accessible at- http://localhost:8079/employee-service/findEmployeeDetails/111
+eureka.instance.preferIpAddress: true
+eureka.client.registerWithEureka: true
+eureka.client.fetchRegistry: true
+
 eureka.client.serviceUrl.defaultZone: http://localhost:8761/eureka
-server.port: 8079
 
+server.port: 8079
 spring.application.name: employee-zuul-service

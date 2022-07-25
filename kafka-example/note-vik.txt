@@ -84,6 +84,7 @@ more info on this- https://habr.com/en/post/529222/
 
 further example- https://www.baeldung.com/ops/kafka-docker-setup
 https://gist.github.com/DevoKun/01b6c9963d5508579f4cbd75d52640a9
+https://www.maestralsolutions.com/spring-boot-implementation-for-apache-kafka-with-kafka-tool/
 **********************************************
 Kafka topics and partitions basics-
 
@@ -91,5 +92,7 @@ https://hevodata.com/learn/kafka-partitions/
 https://www.instaclustr.com/blog/a-visual-understanding-to-ensuring-your-kafka-data-is-literally-in-order/
 https://newrelic.com/blog/best-practices/kafka-best-practices
 
-
+scaling kafka instances-
+https://dev.to/xiaoyifante/design-the-kafka-architecture-to-handle-1-billion-requests-349c
+https://www.confluent.io/blog/optimizing-apache-kafka-deployment/
 
