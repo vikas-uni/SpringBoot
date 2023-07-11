@@ -14,3 +14,9 @@ eureka.client.serviceUrl.defaultZone: http://localhost:8761/eureka
 
 server.port: 8079
 spring.application.name: employee-zuul-service
+
+#to enable actuator endpoints, disabling authentication is necessary
+management.security.enabled: false
+
+#this is added to prevent timeout exception for long requests- https://www.appsdeveloperblog.com/zuul-api-gateway-timeout-error/
+ribbon.ReadTimeout: 60000

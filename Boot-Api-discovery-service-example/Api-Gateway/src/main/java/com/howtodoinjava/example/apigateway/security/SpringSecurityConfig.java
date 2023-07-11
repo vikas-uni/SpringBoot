@@ -50,11 +50,13 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 //				.httpBasic()
 //				.and()
 				.authorizeRequests().antMatchers("/","/testMethod/").permitAll()  //no authentication required for this endpoint
-				.antMatchers(HttpMethod.GET, "/employeeDetails/**").hasRole("USER")
-				.antMatchers(HttpMethod.POST, "/employeeDetails").hasRole("ADMIN")
-				.antMatchers(HttpMethod.PUT, "/employeeDetails/**").hasRole("ADMIN")
-				.antMatchers(HttpMethod.PATCH, "/employeeDetails/**").hasRole("ADMIN")
-				.antMatchers(HttpMethod.DELETE, "/employeeDetails/**").hasRole("ADMIN")
+				/*
+				 * .antMatchers(HttpMethod.GET, "/employeeDetails/**").hasRole("USER")
+				 * .antMatchers(HttpMethod.POST, "/employeeDetails").hasRole("ADMIN")
+				 * .antMatchers(HttpMethod.PUT, "/employeeDetails/**").hasRole("ADMIN")
+				 * .antMatchers(HttpMethod.PATCH, "/employeeDetails/**").hasRole("ADMIN")
+				 * .antMatchers(HttpMethod.DELETE, "/employeeDetails/**").hasRole("ADMIN")
+				 */
 				.and().csrf().disable()
 				.formLogin().disable();
 	}
@@ -74,5 +76,5 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	    public PasswordEncoder passwordEncoder() {
 	        return new  BCryptPasswordEncoder();
 	    }
-
+	 
 }

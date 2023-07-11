@@ -11,7 +11,7 @@ eureka:
 
 # HTTP (Tomcat) port
 server:
-  port: 8761   
+  port: 8761  
 
 spring:
   boot:

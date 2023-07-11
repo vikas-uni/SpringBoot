@@ -1,5 +1,6 @@
 server:
   port: 8010    #port number
+  context-path: /emp-api-gateway
  
 eureka:
   instance:
