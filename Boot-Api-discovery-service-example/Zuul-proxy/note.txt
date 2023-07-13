@@ -4,3 +4,5 @@ https://www.baeldung.com/spring-rest-with-zuul-proxy
 
 https://howtodoinjava.com/spring-cloud/spring-cloud-api-gateway-zuul/
 https://howtodoinjava.com/spring-cloud/spring-boot-ribbon-eureka/
+
+https://www.javainuse.com/spring/cloud-sleuth
