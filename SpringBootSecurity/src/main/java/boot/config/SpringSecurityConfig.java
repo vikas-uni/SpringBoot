@@ -32,14 +32,18 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http
 				// HTTP Basic authentication
-				.httpBasic().and().authorizeRequests().antMatchers(HttpMethod.GET, "/books/**").hasRole("USER")
-				.antMatchers(HttpMethod.POST, "/books").hasRole("ADMIN").antMatchers(HttpMethod.PUT, "/books/**")
-				.hasRole("ADMIN").antMatchers(HttpMethod.PATCH, "/books/**").hasRole("ADMIN")
-				.antMatchers(HttpMethod.DELETE, "/books/**").hasRole("ADMIN").and().csrf().disable().formLogin()
+				.httpBasic().and().authorizeRequests()
+				.antMatchers(HttpMethod.GET, "/books/**").hasRole("USER")
+				.antMatchers(HttpMethod.POST, "/books").hasRole("ADMIN")
+				.antMatchers(HttpMethod.PUT, "/books/**").hasRole("ADMIN")
+				.antMatchers(HttpMethod.PATCH, "/books/**").hasRole("ADMIN")
+				.antMatchers(HttpMethod.DELETE, "/books/**").hasRole("ADMIN")
+				.and().csrf().disable()
+				.formLogin()
 				.disable();
 	}
 
-	// this also works in pace of protected void configure(AuthenticationManagerBuilder auth)
+	// this also works in place of protected void configure(AuthenticationManagerBuilder auth)
 	/*
 	 * @Bean public UserDetailsService userDetailsService() { //ok for demo
 	 * User.UserBuilder users = User.withDefaultPasswordEncoder();

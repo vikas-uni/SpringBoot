@@ -3,3 +3,5 @@ https://mkyong.com/spring-boot/spring-rest-spring-security-example/
 
 --also good example--
 https://www.javainuse.com/spring/sprboot_sec
+
+https://www.marcobehler.com/guides/spring-security

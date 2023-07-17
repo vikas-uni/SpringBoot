@@ -25,6 +25,14 @@ management:
 logging:
   level:
     com.self.sprintboot.learning.apigateway: DEBUG
+
+#we'll find our security filters by enabling the logging for the FilterChainProxy.
+#We can enable logging by adding the following line to application.properties:
+logging.level.org.springframework.security.web.FilterChainProxy: DEBUG
+
+logging.level.org.springframework.security.web.authentication.www.BasicAuthenticationFilter: DEBUG
+
+logging.level.org.springframework.security.authentication.ProviderManager: DEBUG
     
 hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 100000
 
