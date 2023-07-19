@@ -21,7 +21,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 	public void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/oauth/token", "/oauth/authorize**", "/publicApi").permitAll();
 //			 .anyRequest().authenticated();
-		http.requestMatchers().antMatchers("/privateApi", "/testApi") // the /testApi id not checked for authentication
+		http.requestMatchers().antMatchers("/privateApi", "/testApi") // the /testApi is not checked for authentication
 																		// by spring security but by ResourceServer
 				.and().authorizeRequests().antMatchers("/privateApi").access("hasRole('USER')").antMatchers("/testApi")
 				.access("hasRole('USER')").and().requestMatchers().antMatchers("/admin").and().authorizeRequests()
@@ -43,4 +43,5 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 //	                .anyRequest().access(SECURED_READ_SCOPE);
 //	    }
 
+	
 }

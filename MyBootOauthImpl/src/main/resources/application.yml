@@ -7,9 +7,13 @@ spring:
     username: root
     password: root@123
     driver-class-name: com.mysql.jdbc.Driver
-#spring.jpa.hibernate.ddl-auto=update
   jpa:
     hibernate:
       #ddl-auto: create-drop
+      #ddl-auto: create
       ddl-auto: update
     show-sql: true
+    
+logging:
+  level:
+    org.springframework.security: DEBUG

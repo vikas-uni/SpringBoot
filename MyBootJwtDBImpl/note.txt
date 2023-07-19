@@ -2,6 +2,7 @@ https://medium.com/@akhileshanand/spring-boot-api-security-with-jwt-and-role-bas
 https://www.techgeeknext.com/spring/spring-boot-security-token-authentication-jwt-mysql
 https://www.javainuse.com/spring/boot-jwt-mysql
 https://www.xoriant.com/blog/product-engineering/microservices-security-using-jwt-authentication-gateway.html
+https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2
 
 good example- https://medium.com/javarevisited/springboot-security-with-jwt-fca1446790ba
 
