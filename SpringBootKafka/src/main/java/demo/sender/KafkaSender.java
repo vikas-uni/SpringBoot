@@ -29,7 +29,8 @@ public class KafkaSender {
 		future.addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
 
 			public void onSuccess(final SendResult<String, String> message) {
-				System.out.println("sent message= " + message.getProducerRecord().value() + " with offset= "
+				System.out.println("sent message= " + message.getProducerRecord().value() + ", partition= "
+						+ message.getProducerRecord().partition() + " , offset= "
 						+ message.getRecordMetadata().offset());
 			}
 
@@ -38,30 +39,26 @@ public class KafkaSender {
 			}
 		});
 
-		while (!future.isDone()) {
-			System.out.println("Producer not done yet");
-			try {
-				TimeUnit.SECONDS.sleep(1);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-
 		try {
-			ProducerRecord<String, String> record = future.get().getProducerRecord();
+			while (!future.isDone()) {
+				System.out.println("Producer not done yet");
+				TimeUnit.SECONDS.sleep(1);
+			}
+			System.out.println("Producer done !!!");
+			ProducerRecord<String, String> producerRecord = future.get().getProducerRecord();
 			RecordMetadata metadata = future.get().getRecordMetadata();
 
-			System.out.println(record.key() + ", " + record.value() + ", " + record.topic() + "," + record.partition()
-					+ "," + record.timestamp());
+			System.out.println("Producer***********");
+			System.out.println("Key: " + producerRecord.key() + ", Value: " + producerRecord.value() + ", topic: "
+					+ producerRecord.topic() + ", partition: " + producerRecord.partition() + ", timestamp: "
+					+ producerRecord.timestamp());
 
-			System.out.println(metadata.checksum() + "," + metadata.timestamp());
-
+			System.out.println("ser value size : " + metadata.serializedValueSize() + ", RecordMetadata timestamp:"
+					+ metadata.timestamp() + ", RecordMetadata partition: " + metadata.partition());
+			System.out.println("Producer***********");
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

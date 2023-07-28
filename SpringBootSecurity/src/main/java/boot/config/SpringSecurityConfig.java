@@ -10,7 +10,8 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
-@Configuration
+//old config, working but deprecated
+//@Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	// Create 2 users for demo

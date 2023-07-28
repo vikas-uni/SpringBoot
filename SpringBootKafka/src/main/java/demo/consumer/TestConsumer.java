@@ -11,13 +11,13 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 public class TestConsumer {
 	public static void main(String[] args) {
 		Properties props = new Properties();
-		props.put("bootstrap.servers", "computer-VirtualBox:9092");
+		props.put("bootstrap.servers", "[::1]:9092");
 		props.put("group.id", "group1");
 		props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 		props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 
 		KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(props);
-		consumer.subscribe(Collections.singletonList("test"));// name of topic
+		consumer.subscribe(Collections.singletonList("mytest"));// name of topic
 
 		try {
 			while (true) {
