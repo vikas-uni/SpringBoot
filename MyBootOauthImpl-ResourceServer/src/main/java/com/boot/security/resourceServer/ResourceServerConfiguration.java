@@ -1,5 +1,6 @@
 package com.boot.security.resourceServer;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -17,6 +18,8 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 	private static final String RESOURCE_ID = "resource-server-rest-api";
 
+	@Value("${jwt.secret.key}")
+	private String key;// = "as466gf";
 	@Override
 	public void configure(ResourceServerSecurityConfigurer resources) {
 		resources.resourceId(RESOURCE_ID);
@@ -31,7 +34,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 	@Bean
 	public JwtAccessTokenConverter jwtAccessTokenConverter() {
 		JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-		converter.setSigningKey("as466gf");
+		converter.setSigningKey(key);
 		return converter;
 	}
 	
