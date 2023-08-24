@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.jcombat</groupId>
-	<artifactId>MicroserviceDiscoveryServer</artifactId>
+	<artifactId>ProfileMicroserviceDiscoveryServer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>MicroserviceDiscoveryServer</name>
+	<name>ProfileMicroserviceDiscoveryServer</name>
 	<description>Microservice discovery server using Spring Boot</description>
 
 	<parent>
