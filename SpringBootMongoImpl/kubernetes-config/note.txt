@@ -8,3 +8,13 @@ https://github.com/parthec2/springboot-mongodb-k8s-parth/tree/main/src/main/reso
 
 config with ELK-
 https://github.com/aritnag/spring-boot-mongo-kubernetes-docker/blob/master/deployment.yml
+
+note :
+in minikube, first start mongo-depl-and-service.yml
+- kubectl apply -f mongodb-depl-and-service.yml
+
+in case service doesn't starts, check logs, there may be permission issue for mount directory
+go into minikube env-  minikube ssh
+there, give permission to the mount directory- sudo chmod -R 0777 /myK8storage/data/db
+
+then start boot-mongo-demo.yaml
