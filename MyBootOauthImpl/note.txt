@@ -11,6 +11,8 @@ For grant_type=authorization_code flow:
 5. use this auth code and make request by providing client credentials-
 	POST: http://localhost:8111/oauth/token?grant_type=authorization_code&code=Xud4hf&redirect_uri=http://localhost:8111/privateApi
 
+logout url-
+http://localhost:8111/logout
 	
 good examples:
 https://www.javainuse.com/spring/spring-boot-oauth-introduction
