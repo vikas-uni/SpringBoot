@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.CookieClearingLogoutHandler;
 
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -53,12 +54,16 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable().authorizeRequests().antMatchers("/", "/publicApi", "/register").permitAll()
 				.antMatchers("/privateApi").authenticated().antMatchers("/privateApi").hasRole("USER")
 				.antMatchers("/admin").hasRole("ADMIN").and().formLogin();
+		
 		// .disable(); this is commented to enable form login to test authorization_code
 		// flow. the default
 		// login page
 		// is displayed when we hit GET:
 		// http://localhost:8111/oauth/authorize?client_id=client&response_type=code&redirect_uri=http://localhost:8111/privateApi&scope=read
 		// a page appears asking for user and password
+		
+		// sample logout customization
+		http.logout().deleteCookies("remove").invalidateHttpSession(true);
 	}
 
 }

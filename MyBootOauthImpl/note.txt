@@ -2,7 +2,8 @@ this example is enhanced to use JWT tokens
 
 For grant_type=authorization_code flow:
 1.make request from the browser to-
-	GET: http://localhost:8111/oauth/authorize?client_id=client&response_type=code&redirect_uri=http://localhost:8111/privateApi&scope=read
+	GET: 
+	http://localhost:8111/oauth/authorize?client_id=client&response_type=code&redirect_uri=http://localhost:8111/privateApi&scope=read
 	 note:redirect_uri is mandatory
 2. a login page will appear, fill in the credentials.
 3. a page will appear asking for approval.
