@@ -9,7 +9,11 @@ import org.springframework.stereotype.Service;
 public class Consumer2 {
 	private final Logger logger = LoggerFactory.getLogger(Consumer2 .class);
 
-	@KafkaListener(topics = {"${TOPIC_NAME}"}, group = "group1", id="Consumer2")
+	@KafkaListener(topics = {
+			"${TOPIC_NAME}" }, groupId = "group1", id = "Consumer2"/*
+																	 * ,topicPartitions = @TopicPartition(topic =
+																	 * "mytest", partitions = {"1"})
+																	 */)
 	public void consume(String message) {
 		logger.info(String.format("Message recieved Consumer2-> %s", message));
 		System.out.println("syso Message recieved Consumer2-> "+ message);

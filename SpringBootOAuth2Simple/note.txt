@@ -2,6 +2,7 @@ another good example-
 https://howtodoinjava.com/spring-boot2/oauth2-auth-server/
 https://adamzareba.github.io/Secure-Spring-REST-With-Spring-Security-and-OAuth2/
 https://www.devglan.com/spring-security/spring-boot-security-oauth2-example
+https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2
 
 replacing in-memory with db-
 https://erangad.medium.com/replace-inmemory-token-store-with-a-persistent-one-in-spring-boot-oauth2-c00a4c35f90f

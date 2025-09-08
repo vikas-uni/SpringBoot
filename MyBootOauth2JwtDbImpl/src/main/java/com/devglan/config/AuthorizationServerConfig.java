@@ -43,6 +43,13 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 		return new JwtTokenStore(accessTokenConverter());
 	}
 
+	/**
+	 * ClientDetailsServiceConfigurer : a configurer that defines the client details
+	 * service. Client details can be initialized, or you can just refer to an
+	 * existing store. ClientDetailsServiceConfigurer can be used to define an
+	 * in-memory or JDBC implementation of the client details service.In this
+	 * example, we are using an inmemory implementation.
+	 */
 	@Override
 	public void configure(ClientDetailsServiceConfigurer configurer) throws Exception {
 
@@ -56,6 +63,10 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 				refreshTokenValiditySeconds(FREFRESH_TOKEN_VALIDITY_SECONDS);
 	}
 
+	/**
+	 * AuthorizationServerEndpointsConfigurer : defines the authorization and token
+	 * endpoints and the token services.
+	 */
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		endpoints.tokenStore(tokenStore())

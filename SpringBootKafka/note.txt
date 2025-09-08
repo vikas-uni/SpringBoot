@@ -1,5 +1,7 @@
 Kafka topics and partitions basics-
 
+https://medium.com/javarevisited/kafka-partitions-and-consumer-groups-in-6-mins-9e0e336c6c00
+https://medium.com/event-driven-utopia/understanding-kafka-topic-partitions-ae40f80552e8
 https://hevodata.com/learn/kafka-partitions/
 https://www.instaclustr.com/blog/a-visual-understanding-to-ensuring-your-kafka-data-is-literally-in-order/
 https://newrelic.com/blog/best-practices/kafka-best-practices
@@ -8,6 +10,28 @@ https://www.maestralsolutions.com/spring-boot-implementation-for-apache-kafka-wi
 scaling kafka instances-
 https://dev.to/xiaoyifante/design-the-kafka-architecture-to-handle-1-billion-requests-349c
 https://www.confluent.io/blog/optimizing-apache-kafka-deployment/
+
+connecting to kafka running inside wsl-
+Two ways to fix this
+IPv6
+Use IPv6 loopback address in your broker (server.properties)
+listeners=PLAINTEXT://[::1]:9092
+
+Same in Conduktor, for your bootstrap address:
+[::1]:9092
+
+172.x
+Find the address of your WSL 2 network:
+
+$ ip addr | grep "eth0"
+172.x.y.z
+
+Use this in your broker (server.properties)
+listeners=PLAINTEXT://172.x.y.z:9092
+
+Same in Conduktor, for your bootstrap address:
+172.x.y.z:9092
+
 
 to run this example locally-
 

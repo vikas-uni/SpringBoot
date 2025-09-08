@@ -8,7 +8,7 @@ public class SpringBootKafkaApp {
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(new Object[] { SpringBootKafkaApp.class }, args);
+		SpringApplication.run(SpringBootKafkaApp.class , args);
 	}
 
 }

@@ -1,3 +1,12 @@
 other good examples-
 https://www.baeldung.com/zuul-load-balancing
+
 https://www.baeldung.com/spring-rest-with-zuul-proxy
+
+https://howtodoinjava.com/spring-cloud/spring-cloud-api-gateway-zuul/
+https://howtodoinjava.com/spring-cloud/spring-boot-ribbon-eureka/
+
+https://www.javainuse.com/spring/cloud-sleuth
+
+zuul with hystrix circuit breaker-
+https://www.baeldung.com/spring-zuul-fallback-route

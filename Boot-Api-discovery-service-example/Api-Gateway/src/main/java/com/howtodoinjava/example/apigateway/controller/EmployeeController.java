@@ -71,7 +71,7 @@ public class EmployeeController {
 		return ResponseEntity.ok().body(response);
 	}
 
-	//currently this is not woring
+	//currently this is not working
 	@RequestMapping(value = "/testzuul/employeeDetails/{employeeid}", method = RequestMethod.GET)
 	@HystrixCommand(fallbackMethod = "fallbackMethod")
 	public String testzuul(@PathVariable int employeeid) {

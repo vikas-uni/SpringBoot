@@ -4,6 +4,7 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,10 +17,11 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
+//good example on bean creation through @Configuration-
+// https://stackoverflow.com/questions/59059368/injecting-beans-from-within-a-very-same-configuration-class-idioms
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
@@ -41,24 +43,26 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Autowired
 	private PasswordEncoder oauthClientPasswordEncoder;
 
+	@Value("${jwt.secret.key}")
+	private String key;// = "as466gf";
+
 //	@Bean
 //	public TokenStore tokenStore() {
 //		return new JdbcTokenStore(dataSource);
 //	}
-	
-	//------------add these lines to get jwt token instead of normal token-----
+	// ------------add these lines to get jwt token instead of normal token-----
 	@Bean
 	public TokenStore tokenStore() {
 		return new JwtTokenStore(jwtAccessTokenConverter());
 	}
-	
+
 	@Bean
 	public JwtAccessTokenConverter jwtAccessTokenConverter() {
 		JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-		converter.setSigningKey("as466gf");
+		converter.setSigningKey(key);
 		return converter;
 	}
-	//----------------------------------
+	// ----------------------------------
 
 	@Bean
 	public OAuth2AccessDeniedHandler oauthAccessDeniedHandler() {
@@ -81,13 +85,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 //		endpoints.tokenStore(tokenStore()).authenticationManager(authenticationManager)
 //				.userDetailsService(userDetailsService);
 //	}
-	
-	//for jwt token, add- tokenEnhancer(jwtAccessTokenConverter())
+
+	// for jwt token, add- tokenEnhancer(jwtAccessTokenConverter())
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
-		endpoints.tokenStore(tokenStore()).
-		tokenEnhancer(jwtAccessTokenConverter()).
-		authenticationManager(authenticationManager)
-				.userDetailsService(userDetailsService);
+		endpoints.tokenStore(tokenStore()).tokenEnhancer(jwtAccessTokenConverter())
+				.authenticationManager(authenticationManager).userDetailsService(userDetailsService);
 	}
 }

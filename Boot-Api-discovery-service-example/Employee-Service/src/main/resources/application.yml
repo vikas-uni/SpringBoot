@@ -19,7 +19,7 @@ spring:
      
 management:
   security:
-    enabled: false  
+    enabled: false  #disable the spring security on the management endpoints like /env, /refresh etc.
  
 #to add custom logger config, comment below lines 
 #logging:

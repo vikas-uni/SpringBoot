@@ -15,8 +15,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-/*The @EnableWebSecurity is a marker annotation. What that means is that it allows Spring to find and automatically apply this class to the security of the application.
-We need to secure our API’s by restricting which roles are able to execute a particular method. This is achieved by adding the annotation @EnableGlobalMethodSecurity(prePostEnabled = true}.*/
+/**
+ * The @EnableWebSecurity is a marker annotation. What that means is that it
+ * allows Spring to find and automatically apply this class to the security of
+ * the application. We need to secure our APIï¿½s by restricting which roles are
+ * able to execute a particular method. This is achieved by adding the
+ * annotation @EnableGlobalMethodSecurity(prePostEnabled = true}.
+ */
 
 @Configuration
 @EnableWebSecurity
@@ -38,20 +43,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	 * (based on username and password). In fact, the AuthenticationManager
 	 * Interface has exactly one method authenticate which is called to verify if
 	 * the username and password provided by a user are truthy. But the
-	 * AuthenticationManager needs to know where the user’s username and password
+	 * AuthenticationManager needs to know where the userï¿½s username and password
 	 * have been stored. That is why we override the configure method where Spring
 	 * will pass an AuthenticationManagerBuilder. The AuthenticationManagerBuilder
 	 * accepts a custom implementation of the UserDetailsService interface (which we
 	 * will implement when we are building our services). Also at this stage, if we
 	 * are using some form of encryption to store our password in the database, the
-	 * AuthenticationManager needs to know about that as well. It’s actually a very
+	 * AuthenticationManager needs to know about that as well. Itï¿½s actually a very
 	 * bad idea to store a password as plaintext. Here, we will be using BCrypt to
 	 * encode our passwords. The AuthenticationManager we just configured is added
 	 * to the Spring Application Context and is added as a bean by overriding the
 	 * authecationManagerBean method.
 	 * 
-	 * @Autowired
 	 */
+	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		// configure AuthenticationManager so that it knows from where to load
 		// user for matching credentials
@@ -82,7 +87,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	 * an exception. Because we are using JWT to store roles, we need to translate
 	 * that into something that Spring Security can understand. The JWT Token needs
 	 * to be parsed to fetch roles that the SpringSecurityContext needs to become
-	 * aware of before it goes on to check if the API’s permissions will allow it.
+	 * aware of before it goes on to check if the APIï¿½s permissions will allow it.
 	 * Hence we pass along the JwtAuthenticationFilter (Which we will come to in a
 	 * later step).
 	 */	

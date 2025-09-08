@@ -2,20 +2,22 @@ server:
   port: 9200
 spring:
   kafka:
+#    properties:
+#       partition.assignment.strategy: org.apache.kafka.clients.consumer.RangeAssignor
     consumer:
 #      bootstrap-servers: computer-VirtualBox:9092    # this works with kafka running in virtualbox
 #      bootstrap-servers: "localhost:9092"  #this works with kafka running in docker in wsl
-#      bootstrap-servers: "localhost:9093"  #this works with kafka running in WSL
-      bootstrap-servers: "127.0.0.1:9092"   #this works with kafka running in minikube
-#      bootstrap-servers: "[::1]:9093"  #this works with kafka running in WSL and app running on windows. same address need to be specified in kafka server.properties in listeners and advertised.listeners
+#      bootstrap-servers: "localhost:9092"  #this works with kafka running in WSL
+#      bootstrap-servers: "127.0.0.1:9092"   #this works with kafka running in minikube
+      bootstrap-servers: "[::1]:9092"  #this works with kafka running in WSL and app running on windows. same address need to be specified in kafka server.properties in listeners and advertised.listeners
       group-id: group1
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
     producer:
 #      bootstrap-servers: computer-VirtualBox:9092
-#      bootstrap-servers: "[::1]:9093"
-      bootstrap-servers: "127.0.0.1:9092"   
+      bootstrap-servers: "[::1]:9092"
+#      bootstrap-servers: "127.0.0.1:9092"   
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       

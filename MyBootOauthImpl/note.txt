@@ -1,0 +1,22 @@
+this example is enhanced to use JWT tokens
+
+For grant_type=authorization_code flow:
+1.make request from the browser to-
+	GET: 
+	http://localhost:8111/oauth/authorize?client_id=client&response_type=code&redirect_uri=http://localhost:8111/privateApi&scope=read
+	 note:redirect_uri is mandatory
+2. a login page will appear, fill in the credentials.
+3. a page will appear asking for approval.
+4. upon approval, you will be redirected to redirect_uri and get auth code as- http://localhost:8111/privateApi?code=Xud4hf
+5. use this auth code and make request by providing client credentials-
+	POST: http://localhost:8111/oauth/token?grant_type=authorization_code&code=Xud4hf&redirect_uri=http://localhost:8111/privateApi
+
+logout url-
+http://localhost:8111/logout
+	
+good examples:
+https://www.javainuse.com/spring/spring-boot-oauth-introduction
+https://www.javainuse.com/spring/spring-boot-oauth-authorization-code
+https://dzone.com/articles/spring-boot-oauth2-getting-the-authorization-code
+
+https://medium.com/javarevisited/oauth-2-0-authorization-code-flow-in-spring-boot-d8ff393f316d

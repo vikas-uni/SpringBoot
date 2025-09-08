@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 public class MyConfig {
 
 	@Bean
-	@LoadBalanced
+	@LoadBalanced //Spring provided load balancer works in case there are multiple instances of targer service
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}

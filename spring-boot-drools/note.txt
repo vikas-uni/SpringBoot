@@ -1,0 +1,1 @@
+https://medium.com/javarevisited/spring-boot-drools-rule-engine-example-965eea437ee9
