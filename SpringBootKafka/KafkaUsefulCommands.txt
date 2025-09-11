@@ -29,7 +29,13 @@ open a new terminal , type-
 ./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test
 
 -------------------------------------------
+alter no of partitions in existing topic-
 
+./kafka-topics.sh --bootstrap-server [::1]:9092 --topic mytest --alter --partitions 2
+-----------------------------------
+view partition info-
+
+./kafka-topics.sh --bootstrap-server [::1]:9092 --topic mytest --describe
 
 
 
