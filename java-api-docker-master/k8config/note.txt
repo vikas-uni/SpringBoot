@@ -1,0 +1,17 @@
+to run this example in minikube first time
+
+create a namespace-
+kubectl create namespace eks-sample-app
+
+apply the file to run-
+kubectl apply -f "<absolute path>/SpringBoot/java-api-docker-master/my-java-app.yaml"
+
+get the services-
+kubectl get service -n eks-sample-app
+NAME                   TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+my-java-loadbalancer   LoadBalancer   10.99.193.18    127.0.0.1     8080:30468/TCP   2m30s
+my-java-nodeport       NodePort       10.101.63.219   <none>        8080:31169/TCP   2m30s
+my-java-service        ClusterIP      10.104.35.32    <none>        8080/TCP         2m30s
+
+access the api on windows browser/postman-
+http://127.0.0.1:8080/echo/vikas
