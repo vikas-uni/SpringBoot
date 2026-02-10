@@ -18,7 +18,7 @@ public class Consumer {
 	@Value("${TOPIC_NAME}")
     private String topicName;
 	
-    private final Logger logger = LoggerFactory.getLogger(Producer.class);
+    private final Logger logger = LoggerFactory.getLogger(Consumer.class);
 
     //@KafkaListener(topics = {"INPUT_DATA"})
     //@KafkaListener(topics = {"#{'${TOPIC_NAME}'.split(',')}"})  //this also workss
